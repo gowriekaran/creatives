@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=300,height=250">
+  <title>StHubert</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <div id="ad-container">
+
+    <div class="content">
+
+
+      <div class="full-frame frame-2-container">
+
+        <div class="full-frame bg"></div>
+        <div class="sprite full-frame chicken-2"></div>
+        <!-- Giant fan -->
+        <div class="full-frame giant-fan">
+
+          <div class="sprite full-frame object-4"></div>
+          <div class="sprite full-frame object-3"></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="full-frame frame-1-container">
+
+        <div class="full-frame zoomed_bg"></div>
+        <!-- Chicken -->
+        <div class="full-frame chicken">
+          <div class="sprite full-frame chicken_left_arm"></div>
+          <div class="sprite full-frame chicken_body"></div>
+        </div>
+        <!-- Fan -->
+        <div class="sprite full-frame object-1"></div>
+        <div class="sprite full-frame object-2"></div>
+
+      </div>
+
+
+      <div class="full-frame intro_container">
+
+        <div class="sprite full-frame logo"></div>
+        <div class="sprite full-frame text-1"></div>
+
+      </div>
+
+      <div class="sprite full-frame text-2"></div>
+
+      <div class="full-frame outro-container">
+
+        <div class="sprite full-frame object-5"></div>
+        <div class="sprite full-frame object-6"></div>
+        <div class="sprite full-frame object-7"></div>
+
+        <div class="sprite full-frame text-3"></div>
+        <div class="sprite full-frame legal"></div>
+        <div class="sprite full-frame logo-end"></div>
+
+      </div>
+
+      <a id="hitzone"></a>
+
+      <a id="cta-button" class="cta-button hidden full-frame">
+        <div class="sprite full-frame cta"></div>
+        <!-- <div class="sprite full-frame hidden cta-hover" ></div>  -->
+      </a>
+      <a class="replay-button  hide"></a>
+
+    </div>
+
+    <!-- TweenMax -->
+
+    <script type="text/javascript" src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.19.0_643d6911392a3398cb1607993edabfa7_min.js"></script>
+
+
+
+
+
+
+    <!-- Main -->
+    <script type="text/javascript" src="./banner-min.js"></script>
+
+    <!-- Adgear -->
+    <script type="text/javascript" src="https://h5.adgear.com/v1/js/html5.min.js"></script>
+    <script>
+      // console.log(ADGEAR.html5.getEventUrl);
+
+      // Apply the click on the banner div
+      function regEvent(elem, eventName, fn) {
+        if (typeof elem.addEventListener != "undefined") {
+          elem.addEventListener(eventName, fn, false);
+          return true;
+        } else if (typeof elem.attachEvent != "undefined") {
+          elem.attachEvent("on" + eventName, fn);
+          return true;
+        } else if (typeof elem["on" + eventName] == "function") {
+          var existing = elem["on" + eventName];
+          elem["on" + eventName] = function () {
+            existing();
+            fn();
+          };
+          return true;
+        } else {
+          try {
+            elem["on" + eventName] = fn;
+          } catch (err) {
+            return false;
+          }
+          return typeof elem["on" + eventName] == "function";
+        }
+      }
+      regEvent(document.querySelector("#hitzone"), "click", function () {
+        ADGEAR.html5.clickThrough("mainExit");
+      });
+      regEvent(document.querySelector("#cta-button"), "click", function () {
+        ADGEAR.html5.clickThrough("ctaExit");
+      });
+    </script>
+</body>
+
+</html>
